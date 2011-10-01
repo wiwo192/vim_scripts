@@ -31,6 +31,7 @@ function! SummaryModeOn()
   command! -range=% AddSummary call AddSummary(<line1>, <line2>)
   vnoremap <buffer> <space> :AddSummary<cr>
   nnoremap <buffer> <space> za
+  nnoremap <buffer> <2-LeftMouse> za
 
   highlight link Summary Keyword
   syntax match Summary /^      --.*/
