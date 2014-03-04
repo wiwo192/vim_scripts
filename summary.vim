@@ -12,19 +12,22 @@ function! AddSummary(startline, endline)
     call append(a:endline, l:endmarker)
     call append(a:startline - 1, l:beginmarker)
     call cursor(a:startline, 1)
-    
+
     " Open fold and replace __summary__
     "   zo: open fold
     "   f_: search for _ in __summary__
+    "   "_: select cut into black hole register
     "   cw: delete __summary__ and goto insert mode
-    call feedkeys("zof_\"_cw")
+    call feedkeys('zof_"_cw')
 endfunction
 
-function! AddSummary2(startline, endline)
-    call append(a:endline, "      -- ")
-    call append(a:startline - 1, "      -- __summary__ ")
-    execute a:startline . ", " . a:endline + 1 . "fold"
-endfunction
+
+" " Manual folding alternative
+" function! AddSummary2(startline, endline)
+"     call append(a:endline, "      -- ")
+"     call append(a:startline - 1, "      -- __summary__ ")
+"     execute a:startline . ", " . a:endline + 1 . "fold"
+" endfunction
 
 
 function! SummaryModeOn()
